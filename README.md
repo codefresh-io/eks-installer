@@ -6,3 +6,6 @@ https://docs.aws.amazon.com/eks/latest/userguide/
 
 Bootstrapping EKS cluster with Terraform:
 https://www.terraform.io/docs/providers/aws/guides/eks-getting-started.html
+
+Heptio Authenticator for AWS:
+https://github.com/heptio/authenticator
