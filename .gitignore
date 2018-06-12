@@ -1,3 +1,5 @@
-terraform/terraform.tfstate
+config-map-aws-auth.yaml
+kubeconfig.yaml
+terraform/terraform.tfstate*
 terraform/.terraform
 .idea/
