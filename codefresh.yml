@@ -12,7 +12,6 @@ steps:
     commands:
       - apk add --update make bash
       - make codefresh-load-tfstate || echo "Skipping."
-      - cat terraform/terraform.tfstate
 
   setup_eks_cluster:
     image: hashicorp/terraform:0.11.7
