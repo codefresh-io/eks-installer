@@ -8,5 +8,5 @@ cd terraform/
 terraform init
 terraform apply -auto-approve .
 
-terraform output kubeconfig > kubeconfig.yaml
-terraform output config-map-aws-auth > config-map-aws-auth.yaml
+#terraform output kubeconfig > kubeconfig.yaml
+#terraform output config-map-aws-auth > config-map-aws-auth.yaml
