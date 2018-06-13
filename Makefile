@@ -1,10 +1,10 @@
 .PHONY: setup
-install:
+setup:
 	@./scripts/setup.sh
 
-.PHONY: uninstall
-uninstall:
-	@./scripts/uninstall.sh
+.PHONY: teardown
+teardown:
+	@./scripts/teardown.sh
 
 .PHONY: codefresh-save-tfstate
 codefresh-save-tfstate:
