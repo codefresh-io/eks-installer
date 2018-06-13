@@ -33,3 +33,4 @@ docker run -it --rm --entrypoint=sh \
          chmod +x ./heptio-authenticator-aws && \
          mv heptio-authenticator-aws /usr/local/bin && \
          kubectl apply -f /config-map-aws-auth.yaml"
+
