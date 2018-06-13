@@ -1,6 +1,6 @@
-.PHONY: install
+.PHONY: setup
 install:
-	@./scripts/install.sh
+	@./scripts/setup.sh
 
 .PHONY: uninstall
 uninstall:
