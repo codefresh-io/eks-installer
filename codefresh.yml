@@ -18,4 +18,9 @@ steps:
     commands:
       - apk add --update make bash
       - make setup
+
+  save_tfstate:
+    image: codefresh/cli:0.8.54
+    commands:
+      - apk add --update make bash
       - make codefresh-save-tfstate
