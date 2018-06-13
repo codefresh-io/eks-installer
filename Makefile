@@ -13,7 +13,7 @@ codefresh-save-tfstate:
 
 .PHONY: codefresh-load-tfstate
 codefresh-load-tfstate:
-	@set -o pipefail; codefresh get context eks-install -o json | jq -r '.spec.data.TFSTATE_BASE64' | sed -e 's/^null$$//' | base64 -D > terraform/terraform.tfstate
+	@set -o pipefail; codefresh get context eks-install -o json | jq -r '.spec.data.TFSTATE_BASE64' | sed -e 's/^null$$//' | base64 -d > terraform/terraform.tfstate
 
 .PHONY: codefresh-remove-tfstate
 codefresh-remove-tfstate:
