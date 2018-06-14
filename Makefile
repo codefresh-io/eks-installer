@@ -16,4 +16,4 @@ codefresh-load-tfstate:
 
 .PHONY: codefresh-remove-tfstate
 codefresh-remove-tfstate:
-	@./scripts/codefresh-remove-tfstate
+	@./scripts/codefresh-remove-tfstate.sh
