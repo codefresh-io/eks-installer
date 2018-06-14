@@ -10,7 +10,7 @@ if [ "$(uname)" == "Darwin" ]; then
     DECODE_FLAGS="-D"
 fi
 
-codefresh get context eks-install -o json | \
+codefresh get context eks-install-${CLUSTER_NAME} -o json | \
     jq -r '.spec.data.TFSTATE_BASE64' | \
     sed -e 's/^null$$//' | \
     base64 $DECODE_FLAGS > terraform/terraform.tfstate
