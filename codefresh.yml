@@ -24,3 +24,28 @@ steps:
     commands:
       - apk add --update make bash
       - make codefresh-save-tfstate
+
+  create_kubernetes_resources:
+    image: lachlanevenson/k8s-kubectl:v1.10.4
+    commands:
+      - wget https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-06-05/bin/linux/amd64/heptio-authenticator-aws
+      - chmod +x heptio-authenticator-aws
+      - cp heptio-authenticator-aws /usr/local/bin
+      - export KUBECONFIG="$(pwd)/kubeconfig.yaml"
+      - kubectl apply -f config-map-aws-auth.yaml
+      - kubectl apply -f service-account.yaml
+      - kubectl apply -f role-binding.yaml
+
+  init_helm:
+    image: lachlanevenson/k8s-helm:v2.9.1
+    commands:
+      - cp heptio-authenticator-aws /usr/local/bin
+      - export KUBECONFIG="$(pwd)/kubeconfig.yaml"
+      - helm init
+
+  get_token:
+   image: lachlanevenson/k8s-kubectl:v1.10.4
+   commands:
+     - cp heptio-authenticator-aws /usr/local/bin
+     - export KUBECONFIG="$(pwd)/kubeconfig.yaml"
+     - kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep default | awk '{print $1}')
