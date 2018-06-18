@@ -5,7 +5,7 @@ steps:
     image: bash:4.4.23
     commands:
       - echo 'Checking for CLUSTER_NAME, AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY...'
-      - '[[ -z $CLUSTER_NAME || -z $AWS_ACCESS_KEY_ID || -z $AWS_SECRET_ACCESS_KEY ]] && exit 1 || true'
+      - bash -c '[[ -z $CLUSTER_NAME || -z $AWS_ACCESS_KEY_ID || -z $AWS_SECRET_ACCESS_KEY ]] && exit 1 || true'
 
   load_tfstate:
     image: codefresh/cli:0.8.54
