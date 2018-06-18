@@ -49,4 +49,4 @@ steps:
    commands:
      - cp heptio-authenticator-aws /usr/local/bin
      - export KUBECONFIG="$(pwd)/kubeconfig.yaml"
-     - kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') | iconv -f ASCII -t UTF-8 | base64
+     - kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') | openssl base64 -e -A
