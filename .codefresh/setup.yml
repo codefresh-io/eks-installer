@@ -9,13 +9,6 @@ steps:
       - bash -c '[[ -z $CLUSTER_NAME || -z $AWS_ACCESS_KEY_ID || -z $AWS_SECRET_ACCESS_KEY ]] && exit 1 || true'
       - cf_export K8S_NAME="eks-$CLUSTER_NAME"
 
-  main_clone:
-    title: Git checkout ek-installer
-    image: alpine/git:1.0.4
-    commands:
-      - git clone https://github.com/codefresh-io/eks-installer.git /tmp/clone
-      - cp -r /tmp/clone/* .
-
   load_tfstate:
     title: Attempt to load Terraform statefile from Codefresh context
     image: codefresh/cli:0.8.54

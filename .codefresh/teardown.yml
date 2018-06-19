@@ -8,13 +8,6 @@ steps:
       - echo 'Checking for CLUSTER_NAME, AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY...'
       - bash -c '[[ -z $CLUSTER_NAME || -z $AWS_ACCESS_KEY_ID || -z $AWS_SECRET_ACCESS_KEY ]] && exit 1 || true'
 
-  main_clone:
-    title: Git checkout ek-installer
-    image: alpine/git:1.0.4
-    commands:
-      - git clone https://github.com/codefresh-io/eks-installer.git /tmp/clone
-      - cp -r /tmp/clone/* .
-
   load_tfstate:
     title: Load Terraform statefile from Codefresh context
     image: codefresh/cli:0.8.54
