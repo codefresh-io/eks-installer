@@ -1,6 +1,9 @@
 #!/bin/bash -e
 
 CLUSTER_NAME="${CLUSTER_NAME:-terraform-eks-demo}"
+CLUSTER_SIZE="${CLUSTER_SIZE:-1}"
+CLUSTER_REGION="${CLUSTER_REGION:-us-west-2}"
+CLUSTER_INSTANCE_TYPE="${CLUSTER_INSTANCE_TYPE:-m4.large}"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR/../
@@ -14,7 +17,12 @@ set +e
 N=0
 SUCCESS="false"
 until [ $N -ge 3 ]; do
-  terraform apply -auto-approve -var "cluster-name=${CLUSTER_NAME}" .
+  terraform apply -auto-approve \
+    -var "cluster-name=${CLUSTER_NAME}" \
+    -var "cluster-size=${CLUSTER_SIZE}" \
+    -var "cluster-region=${CLUSTER_REGION}" \
+    -var "cluster-instance-type=${CLUSTER_INSTANCE_TYPE}" \
+    .
   if [[ "$?" == "0" ]]; then
     SUCCESS="true"
     break

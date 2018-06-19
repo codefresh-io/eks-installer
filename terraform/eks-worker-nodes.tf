@@ -130,7 +130,7 @@ resource "aws_launch_configuration" "demo" {
   associate_public_ip_address = true
   iam_instance_profile        = "${aws_iam_instance_profile.demo-node.name}"
   image_id                    = "${data.aws_ami.eks-worker.id}"
-  instance_type               = "m4.large"
+  instance_type               = "${var.cluster-instance-type}"
   name_prefix                 = "${var.cluster-name}"
   security_groups             = ["${aws_security_group.demo-node.id}"]
   user_data_base64            = "${base64encode(local.demo-node-userdata)}"
@@ -141,9 +141,9 @@ resource "aws_launch_configuration" "demo" {
 }
 
 resource "aws_autoscaling_group" "demo" {
-  desired_capacity     = 1
+  desired_capacity     = "${var.cluster-size}"
   launch_configuration = "${aws_launch_configuration.demo.id}"
-  max_size             = 1
+  max_size             = "${var.cluster-size}"
   min_size             = 1
   name                 = "${var.cluster-name}"
   vpc_zone_identifier  = ["${aws_subnet.demo.*.id}"]

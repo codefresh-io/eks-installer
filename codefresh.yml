@@ -57,7 +57,6 @@ steps:
     image: byrnedo/alpine-curl:0.1.5
     commands:
       - apk add --update make bash jq
-      - cat kubeca.txt; cat kubehost.txt
       - export K8S_CA="$(cat kubeca.txt)"
       - export K8S_HOST="$(cat kubehost.txt)"
       - make codefresh-add-cluster

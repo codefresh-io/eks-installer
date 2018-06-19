@@ -3,7 +3,7 @@
 #
 
 provider "aws" {
-  region = "us-west-2"
+  region = "${var.cluster-region}"
 }
 
 # Using these data sources allows the configuration to be
