@@ -8,7 +8,7 @@ CLUSTER_INSTANCE_TYPE="${CLUSTER_INSTANCE_TYPE:-m4.large}"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR/../
 
-pushd terraform/
+cd terraform/
 
 terraform init
 
@@ -35,11 +35,7 @@ if [[ "$SUCCESS" != "true" ]]; then
     exit 1
 fi
 
-popd
-
-pushd kubernetes/
-terraform output kubeca > kubeca.txt
-terraform output kubehost > kubehost.txt
-terraform output kubeconfig > kubeconfig.yaml
-terraform output config-map-aws-auth > config-map-aws-auth.yaml
-popd
+terraform output kubeca > ../kubernetes/kubeca.txt
+terraform output kubehost > ../kubernetes/kubehost.txt
+terraform output kubeconfig > ../kubernetes/kubeconfig.yaml
+terraform output config-map-aws-auth > ../kubernetes/config-map-aws-auth.yaml
