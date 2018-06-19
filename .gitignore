@@ -1,8 +1,11 @@
-config-map-aws-auth.yaml
-kubeconfig.yaml
-kubeca.txt
-kubehost.txt
+.idea/
+
 eks-install-context.yaml
+
+kubernetes/config-map-aws-auth.yaml
+kubernetes/kubeconfig.yaml
+kubernetes/kubeca.txt
+kubernetes/kubehost.txt
+
 terraform/terraform.tfstate*
 terraform/.terraform
-.idea/

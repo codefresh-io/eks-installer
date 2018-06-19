@@ -38,7 +38,8 @@ steps:
       - wget https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-06-05/bin/linux/amd64/heptio-authenticator-aws
       - chmod +x heptio-authenticator-aws
       - cp heptio-authenticator-aws /usr/local/bin
-      - export KUBECONFIG="$(pwd)/kubeconfig.yaml"
+      - export KUBECONFIG="$(pwd)/kubernetes/kubeconfig.yaml"
+      - cd kubernetes/
       - kubectl apply -f config-map-aws-auth.yaml
       - kubectl apply -f service-account.yaml
       - kubectl apply -f role-binding.yaml
@@ -47,14 +48,14 @@ steps:
     image: lachlanevenson/k8s-helm:v2.9.1
     commands:
       - cp heptio-authenticator-aws /usr/local/bin
-      - export KUBECONFIG="$(pwd)/kubeconfig.yaml"
+      - export KUBECONFIG="$(pwd)/kubernetes/kubeconfig.yaml"
       - helm init --service-account admin-user
 
   get_token:
     image: lachlanevenson/k8s-kubectl:v1.10.4
     commands:
       - cp heptio-authenticator-aws /usr/local/bin
-      - export KUBECONFIG="$(pwd)/kubeconfig.yaml"
+      - export KUBECONFIG="$(pwd)/kubernetes/kubeconfig.yaml"
       - export SECRET_ID="$(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')"
       - cf_export K8S_TOKEN=$(kubectl -n kube-system get secret $SECRET_ID -o jsonpath='{.data.token}')
 
@@ -62,6 +63,6 @@ steps:
     image: byrnedo/alpine-curl:0.1.5
     commands:
       - apk add --update make bash jq
-      - export K8S_CA="$(cat kubeca.txt)"
-      - export K8S_HOST="$(cat kubehost.txt)"
+      - export K8S_CA="$(cat kubernetes/kubeca.txt)"
+      - export K8S_HOST="$(cat kubernetes/kubehost.txt)"
       - make codefresh-add-cluster
