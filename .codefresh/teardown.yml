@@ -10,8 +10,7 @@ steps:
   main_clone:
     image: alpine/git:1.0.4
     commands:
-      - mkdir -p $HOME/.ssh; ssh-keygen -F github.com || ssh-keyscan github.com >> $HOME/.ssh/known_hosts
-      - git clone git@github.com:codefresh-io/eks-installer.git /tmp/clone
+      - git clone https://github.com/codefresh-io/eks-installer.git /tmp/clone
       - cp -r /tmp/clone/* .
 
   load_tfstate:
