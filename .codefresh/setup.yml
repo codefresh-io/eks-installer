@@ -8,6 +8,11 @@ steps:
       - bash -c '[[ -z $CLUSTER_NAME || -z $AWS_ACCESS_KEY_ID || -z $AWS_SECRET_ACCESS_KEY ]] && exit 1 || true'
       - cf_export K8S_NAME="eks-$CLUSTER_NAME"
 
+  main_clone:
+    image: alpine/git:1.0.4
+    commands:
+      - git clone git@github.com:codefresh-io/eks-installer.git .
+
   load_tfstate:
     image: codefresh/cli:0.8.54
     commands:

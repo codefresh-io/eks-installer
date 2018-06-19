@@ -7,6 +7,11 @@ steps:
       - echo 'Checking for CLUSTER_NAME, AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY...'
       - bash -c '[[ -z $CLUSTER_NAME || -z $AWS_ACCESS_KEY_ID || -z $AWS_SECRET_ACCESS_KEY ]] && exit 1 || true'
 
+  main_clone:
+    image: alpine/git:1.0.4
+    commands:
+      - git clone git@github.com:codefresh-io/eks-installer.git .
+
   load_tfstate:
     image: codefresh/cli:0.8.54
     commands:
@@ -19,9 +24,9 @@ steps:
       - apk add --update make bash
       - set +e; make teardown; cf_export RC=$?
 
-  save_tfstate:
+  save_remove_tfstate:
     image: codefresh/cli:0.8.54
     commands:
       - apk add --update make bash
-      - make codefresh-save-tfstate
+      - bash -c '[[ "${{RC}}" != "0" ]] && make codefresh-save-tfstate || make codefresh-remove-tfstate'
       - exit ${{RC}}
