@@ -17,10 +17,11 @@ steps:
     image: hashicorp/terraform:0.11.7
     commands:
       - apk add --update make bash
-      - make teardown
+      - set +e; make teardown; cf_export RC=$?
 
-  remove_tfstate:
+  save_tfstate:
     image: codefresh/cli:0.8.54
     commands:
       - apk add --update make bash
-      - make codefresh-remove-tfstate
+      - make codefresh-save-tfstate
+      - exit ${{RC}}
