@@ -1,5 +1,7 @@
 config-map-aws-auth.yaml
 kubeconfig.yaml
+kubeca.txt
+kubehost.txt
 eks-install-context.yaml
 terraform/terraform.tfstate*
 terraform/.terraform

@@ -27,5 +27,7 @@ if [[ "$SUCCESS" != "true" ]]; then
     exit 1
 fi
 
+terraform output kubeca > ../kubeca.txt
+terraform output kubehost > ../kubehost.txt
 terraform output kubeconfig > ../kubeconfig.yaml
 terraform output config-map-aws-auth > ../config-map-aws-auth.yaml

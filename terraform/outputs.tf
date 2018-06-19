@@ -48,6 +48,10 @@ users:
         - "-i"
         - "${var.cluster-name}"
 KUBECONFIG
+
+  kubeca = "${aws_eks_cluster.demo.certificate_authority.0.data}"
+  kubehost = "${aws_eks_cluster.demo.endpoint}"
+
 }
 
 output "config-map-aws-auth" {
@@ -56,4 +60,12 @@ output "config-map-aws-auth" {
 
 output "kubeconfig" {
   value = "${local.kubeconfig}"
+}
+
+output "kubeca" {
+  value = "${local.kubeca}"
+}
+
+output "kubehost" {
+  value = "${local.kubehost}"
 }
