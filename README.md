@@ -46,3 +46,6 @@ https://www.terraform.io/docs/providers/aws/guides/eks-getting-started.html
 
 Heptio Authenticator for AWS:
 https://github.com/heptio/authenticator
+
+## Credits
+The contents of `terraform/` directory based on the official Terraform EKS example found here: https://github.com/terraform-providers/terraform-provider-aws/tree/master/examples/eks-getting-started
