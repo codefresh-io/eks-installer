@@ -1,6 +1,5 @@
 #!/bin/bash -e
 
-CLUSTER_NAME="${CLUSTER_NAME:-terraform-eks-demo}"
 CF_API_HOST="${CF_API_HOST:-https://g.codefresh.io}"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

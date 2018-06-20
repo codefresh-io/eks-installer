@@ -7,6 +7,7 @@ steps:
     commands:
       - echo 'Checking for CLUSTER_NAME, AWS_ACCESS_KEY_ID, and AWS_SECRET_ACCESS_KEY...'
       - bash -c '[[ -z $CLUSTER_NAME || -z $AWS_ACCESS_KEY_ID || -z $AWS_SECRET_ACCESS_KEY ]] && exit 1 || true'
+      - cf_export K8S_NAME="eks-$CLUSTER_NAME"
 
   load_tfstate:
     title: Load Terraform statefile from Codefresh context
@@ -29,3 +30,10 @@ steps:
       - apk add --update make bash
       - bash -c '[[ "${{RC}}" != "0" ]] && make codefresh-save-tfstate || make codefresh-remove-tfstate'
       - exit ${{RC}}
+
+  remove_cluster:
+    title: Remove EKS cluster from Codefresh account
+    image: byrnedo/alpine-curl:0.1.5
+    commands:
+      - apk add --update make bash jq
+      - make codefresh-remove-cluster
