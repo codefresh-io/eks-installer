@@ -21,6 +21,9 @@ The following environment variables are **optional**:
 
 ### setup.yml
 
+View YAML: 
+[.codefresh/setup.yml](https://github.com/codefresh-io/eks-installer/blob/master/.codefresh/setup.yml)
+
 Does the following:
 
 1. Bootstraps an EKS cluster and VPC in your AWS account using Terraform
@@ -30,6 +33,9 @@ Does the following:
 5. Adds the cluster to your Codefresh account
 
 ### teardown.yml
+
+View YAML: 
+[.codefresh/teardown.yml](https://github.com/codefresh-io/eks-installer/blob/master/.codefresh/teardown.yml)
 
 Does the following:
 
