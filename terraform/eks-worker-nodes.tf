@@ -153,6 +153,11 @@ resource "aws_autoscaling_group" "demo" {
     value               = "${var.cluster-name}"
     propagate_at_launch = true
   }
+  
+resource "aws_key_pair" "demo" {
+  key_name   = "${var.key-pair-name}"
+  public_key = "${var.key-pair-public-key}"
+}
 
   tag {
     key                 = "kubernetes.io/cluster/${var.cluster-name}"
