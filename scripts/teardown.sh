@@ -15,6 +15,8 @@ cd terraform/
 terraform init
 terraform destroy -auto-approve \
     -var "cluster-name=${CLUSTER_NAME}" \
+    -var "key-pair-name=${KEY_PAIR_NAME}" \
+    -var "key-pair-public-key=${KEY_PAIR_PUBLIC_KEY}" \
     -var "cluster-size=${CLUSTER_SIZE}" \
     -var "cluster-region=${CLUSTER_REGION}" \
     -var "cluster-instance-type=${CLUSTER_INSTANCE_TYPE}" \
