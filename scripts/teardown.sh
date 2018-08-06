@@ -4,6 +4,8 @@ CLUSTER_NAME="${CLUSTER_NAME:-terraform-eks-demo}"
 CLUSTER_SIZE="${CLUSTER_SIZE:-1}"
 CLUSTER_REGION="${CLUSTER_REGION:-us-west-2}"
 CLUSTER_INSTANCE_TYPE="${CLUSTER_INSTANCE_TYPE:-m4.large}"
+KEY_PAIR_NAME="${KEY_PAIR_NAME:-default}"
+KEY_PAIR_PUBLIC_KEY="${CLUSTER_REGION:-default}"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR/../
