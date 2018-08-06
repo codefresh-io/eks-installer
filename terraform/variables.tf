@@ -21,3 +21,8 @@ variable "cluster-instance-type" {
   default = "m4.large"
   type    = "string"
 }
+
+variable "cluster-key-name" {
+  default = ""
+  type    = "string"
+}

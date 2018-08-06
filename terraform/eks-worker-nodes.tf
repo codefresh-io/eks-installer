@@ -134,6 +134,7 @@ resource "aws_launch_configuration" "demo" {
   name_prefix                 = "${var.cluster-name}"
   security_groups             = ["${aws_security_group.demo-node.id}"]
   user_data_base64            = "${base64encode(local.demo-node-userdata)}"
+  key_name                    = "${var.cluster-key-name}"
 
   lifecycle {
     create_before_destroy = true
