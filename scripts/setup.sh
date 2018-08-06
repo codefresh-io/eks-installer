@@ -4,6 +4,7 @@ CLUSTER_NAME="${CLUSTER_NAME:-terraform-eks-demo}"
 CLUSTER_SIZE="${CLUSTER_SIZE:-1}"
 CLUSTER_REGION="${CLUSTER_REGION:-us-west-2}"
 CLUSTER_INSTANCE_TYPE="${CLUSTER_INSTANCE_TYPE:-m4.large}"
+CLUSTER_KEY_NAME="${CLUSTER_KEY_NAME:-}"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR/../
@@ -22,6 +23,7 @@ until [ $N -ge 3 ]; do
     -var "cluster-size=${CLUSTER_SIZE}" \
     -var "cluster-region=${CLUSTER_REGION}" \
     -var "cluster-instance-type=${CLUSTER_INSTANCE_TYPE}" \
+    -var "cluster-key-name=${CLUSTER_KEY_NAME}" \
     .
   if [[ "$?" == "0" ]]; then
     SUCCESS="true"
