@@ -17,6 +17,7 @@ The following environment variables are **optional**:
 - `CLUSTER_SIZE` - number of nodes in ASG (default: 1)
 - `CLUSTER_REGION` - AWS region to deploy to (default: us-west-2)
 - `CLUSTER_INSTANCE_TYPE` - EC2 instance type (default: m4.large)
+- `CLUSTER_KEY_NAME` - The key name to use for SSH access (default: *None*)
 
 
 ### setup.yml
