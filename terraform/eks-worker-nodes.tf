@@ -7,6 +7,11 @@
 #  * AutoScaling Group to launch worker instances
 #
 
+resource "aws_key_pair" "demo" {
+  key_name   = "${var.key-pair-name}"
+  public_key = "${var.key-pair-public-key}"
+}
+
 resource "aws_iam_role" "demo-node" {
   name = "${var.cluster-name}-node"
 
@@ -154,11 +159,6 @@ resource "aws_autoscaling_group" "demo" {
     propagate_at_launch = true
   }
   
-resource "aws_key_pair" "demo" {
-  key_name   = "${var.key-pair-name}"
-  public_key = "${var.key-pair-public-key}"
-}
-
   tag {
     key                 = "kubernetes.io/cluster/${var.cluster-name}"
     value               = "owned"
