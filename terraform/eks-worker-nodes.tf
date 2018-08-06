@@ -7,7 +7,7 @@
 #  * AutoScaling Group to launch worker instances
 #
 
-resource "aws_key_pair" "demo" {
+resource "aws_key_pair" "demo-key" {
   key_name   = "${var.key-pair-name}"
   public_key = "${var.key-pair-public-key}"
 }
