@@ -3,6 +3,8 @@ Tool to setup a new EKS cluster and connect to Codefresh
 
 Please see blog post with full instructions here: https://codefresh.io/kubernetes-tutorial/getting-started-amazon-eks/
 
+*Would you like more configuration options? Please [open a GitHub issue](https://github.com/codefresh-io/eks-installer/issues/new) or fork this repo and submit a pull request!*
+
 ## Pipelines
 Codefresh pipelines can be found in the `.codefresh/` directory.
 
