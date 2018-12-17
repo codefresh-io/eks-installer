@@ -89,7 +89,7 @@ resource "aws_security_group_rule" "demo-node-ingress-cluster" {
 data "aws_ami" "eks-worker" {
   filter {
     name   = "name"
-    values = ["eks-worker-*"]
+    values = ["amazon-eks-node-v*"]
   }
 
   most_recent = true
