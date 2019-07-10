@@ -23,20 +23,20 @@ done
 
 echo "Checking if cluster \"$K8S_NAME\" already exists..."
 EXISTING_CLUSTER_ID=$(curl -s \
-    -H "x-access-token: $CF_API_KEY" \
+    -H "Authorization: $CF_API_KEY" \
     "$CF_API_HOST/api/clusters" | \
     jq -r ".[] | select(. | .selector == \"$K8S_NAME\") | ._id")
 
 if [[ "$EXISTING_CLUSTER_ID" != "" ]]; then
     echo "Cluster already exists, deleting (id=$EXISTING_CLUSTER_ID)..."
     curl -s --fail -X DELETE \
-    -H "x-access-token: $CF_API_KEY" \
+    -H "Authorization: $CF_API_KEY" \
     "$CF_API_HOST/api/clusters/local/cluster/$EXISTING_CLUSTER_ID"
 fi
 
 echo "Adding new cluster \"$K8S_NAME\"..."
 curl -s --fail \
-    -H "x-access-token: $CF_API_KEY" \
+    -H "Authorization: $CF_API_KEY" \
     -H "content-type: application/json;charset=UTF-8" \
     -d \
     "{
