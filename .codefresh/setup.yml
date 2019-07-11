@@ -6,7 +6,7 @@ steps:
     type: git-clone   
     repo: indiversecompany/eks-installer-dev
     revision: master
-    provider: idc1
+    git: idc1
 
   check_env:
     title: Check environment for required variables
