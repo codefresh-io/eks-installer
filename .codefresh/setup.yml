@@ -5,7 +5,6 @@ steps:
     title: 'Cloning ICD-Installer-Dev repo'   
     type: git-clone   
     repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'  
-    provider: idc1
 
   check_env:
     title: Check environment for required variables
