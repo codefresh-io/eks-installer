@@ -1,6 +1,12 @@
 version: '1.0'
 steps:
 
+  main_clone: 
+    title: 'Cloning ICD-Installer-Dev repo'   
+    type: git-clone   
+    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'  
+    provider: idc1
+
   check_env:
     title: Check environment for required variables
     image: bash:4.4.23
