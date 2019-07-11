@@ -4,7 +4,9 @@ steps:
   main_clone: 
     title: 'Cloning ICD-Installer-Dev repo'   
     type: git-clone   
-    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'  
+    repo: indiversecompany/eks-installer-dev
+    revision: master
+    git: idc1
 
   check_env:
     title: Check environment for required variables
