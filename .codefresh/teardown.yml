@@ -18,7 +18,7 @@ steps:
 
   teardown_eks_cluster:
     title: Teardown EKS cluster using Terraform
-    image: hashicorp/terraform:0.11.7
+    image: hashicorp/terraform:0.12.7
     commands:
       - apk add --update make bash
       - set +e; make teardown; cf_export RC=$?
